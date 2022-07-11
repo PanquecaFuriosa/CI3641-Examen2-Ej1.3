@@ -32,10 +32,10 @@ class Arbol:
                 self.esMaxHeap = False
             max = actual.valor
             self.arbolPre.append(actual.valor)
-            self.preorder(self.hojaI, max)
-            self.preorder(self.hojaD, max)
+            self.preorder(actual.hojaI, max)
+            self.preorder(actual.hojaD, max)
     
-    def postorder(self, actual):
+    def postorder(self, actual, max):
         """Recorre el arbol en postorder, también verifica que es un max heap
 
         Args:
@@ -46,8 +46,8 @@ class Arbol:
             if (max < actual.valor):
                 self.esMaxHeap = False
             max = actual.valor
-            self.postorder(self.hojaI, max)
-            self.postorder(self.hojaD, max)
+            self.postorder(actual.hojaI, max)
+            self.postorder(actual.hojaD, max)
             self.arbolPost.append(actual.valor)
     
     def esMaxHeapSimetrico(self) -> bool: 
