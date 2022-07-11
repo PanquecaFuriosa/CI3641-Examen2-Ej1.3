@@ -14,18 +14,16 @@ class Church:
         self.Suc = suc
         self.Zero = cero
     
-    def zero(self, actual) -> int:
+    def sucesor(self, actual) -> Church:
         """Función que busca recursivamente el numeral de Church
 
         Args:
             actual (Church): Es el numeral de Church anterior
 
         Returns:
-            int: Es el numeral de church buscado
+            Church: Church del Curch actual
         """
-        if actual.Suc != None:
-            return self.zero(actual.Suc) + 1
-        return actual.Zero + 1
+        return Church(suc=actual)
 
     def __add__(self, other) -> Church:
         """Suma de numerales de Church
@@ -36,7 +34,11 @@ class Church:
         Returns:
             Church: Es el numeral de church resultante
         """
-        return Church(suc=self.zero(self)+self.zero(other)-1)
+        if self == None:
+            return other
+        if other == None:
+            return self
+        return Church(suc=self.Suc.__add__(other))
 
     def __mul__(self, other) -> Church:
         """multiplicación de numerales de Church
@@ -47,4 +49,6 @@ class Church:
         Returns:
             Church: Es el numeral de church resultante
         """
-        return Church(suc=self.zero(self)*self.zero(other)-1)
+        if self.Suc == None or other.Suc == None:
+            return Church(cero=self.Zero)
+        return (self.__mul__(other.Suc)).__add__(self)
