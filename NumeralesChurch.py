@@ -8,7 +8,7 @@ class Church:
         """Inicialización del Church
 
         Args:
-            suc (int, optional): Es el cero de Church. Defaults toPor defecto None.
+            suc (any), optional): Es el cero de Church. Por defecto None.
             cero (Church, optional): Es un númmeral de Church anterior. Por defecto None.
         """
         self.Suc = suc
