@@ -34,9 +34,9 @@ class Church:
         Returns:
             Church: Es el numeral de church resultante
         """
-        if self == None:
+        if self.Suc == None:
             return other
-        if other == None:
+        if other.Suc == None:
             return self
         return Church(suc=self.Suc.__add__(other))
 
